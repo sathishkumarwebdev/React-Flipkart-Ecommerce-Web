@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { FaStar } from "react-icons/fa";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export function Card({ product }) {
   const { title, price, rating, discountPercentage, thumbnail, id } = product;
@@ -9,13 +9,32 @@ export function Card({ product }) {
   const discountValue = price * ((100 - discountPercentage) / 100);
   const value = discountValue.toFixed(2);
 
+  function handleClick() {
+    navigate("/ProductDetails", { state: { product } });
+  }
+
   return (
     <>
       <div className="card-box">
-        <div className="card-img">
+        <div
+          className="card-img"
+          onClick={(e) => {
+            e.stopPropagation();
+            console.log(e.target.id);
+            handleClick(e);
+          }}
+        >
           <img src={thumbnail} alt={title} className="thumbnail-img" />
         </div>
-        <div className="card-title" id={id}>
+        <div
+          className="card-title"
+          id={id}
+          onClick={(e) => {
+            e.stopPropagation();
+            console.log(e.target.id);
+            handleClick(e);
+          }}
+        >
           {title}
         </div>
         <div className="card-rating">

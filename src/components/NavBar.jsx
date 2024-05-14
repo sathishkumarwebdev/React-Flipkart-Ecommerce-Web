@@ -1,17 +1,29 @@
 import logo from "../assets/flipkart-logo.png";
 import plus from "../assets/plus.png";
-import { useState,useContext } from "react";
+import { useContext, useState } from "react";
 import { FaSearch } from "react-icons/fa";
 import { FaShoppingCart } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
+import { cartContext } from "../providers/CartProvider";
+import { userContext } from "../providers/userProvider";
+import { CartCount } from "../components/CartCount";
 import { TiArrowSortedUp } from "react-icons/ti";
-import {userContext} from "../providers/userProvider"
-
 export function NavBar() {
+  const [userMouseMove, setUserMouseMove] = useState(false);
+  const context = useContext(cartContext);
+  const userDataContext = useContext(userContext);
+  const { cart } = context;
+  const { userData } = userDataContext;
   const navigate = useNavigate();
- const userDataContext = useContext(userContext);
- const { userData } = userDataContext;
+
   const { firstName, lastName } = userData;
+  const cartQty = cart.reduce((acc, cart) => acc + cart.qty, 0);
+  function yourCart() {
+    navigate("/YourCart");
+  }
+  function handleMouseOver() {
+    setUserMouseMove(!userMouseMove);
+  }
 
   return (
     <header>
@@ -37,8 +49,32 @@ export function NavBar() {
         </div>
         <div className="username-nav-item">
           {firstName ? (
-            <div>
+            <div
+              className="user-name"
+              onMouseOver={(e) => {
+                e.stopPropagation();
+                handleMouseOver();
+              }}
+            >
               {firstName}&nbsp;{lastName}
+              {userMouseMove ? (
+                // <div className="userProfile-box">
+                //   <div className="arrow-box">
+                //     <TiArrowSortedUp/>
+                //   </div>
+                //   <div>hi</div>
+                // </div>
+                <div className="dropdown-list">
+                  <div className="arrow">
+                    <TiArrowSortedUp size={50} />
+                  </div>
+                  <div className="profile-box">
+                    <div>user profile</div>
+                  </div>
+                </div>
+              ) : (
+                ""
+              )}
             </div>
           ) : (
             <div>
@@ -50,8 +86,15 @@ export function NavBar() {
         </div>
         <div className="nav-item">Become a seller</div>
         <div className="nav-item">More</div>
-        <div className="cart">
+        <div className="cart" onClick={() => yourCart()}>
           <FaShoppingCart color="white" fontSize={"24px"} />
+          {cartQty == 0 ? (
+            ""
+          ) : (
+            <div className="cart-qty">
+              <CartCount cart={cart} />
+            </div>
+          )}
 
           <span>Cart</span>
         </div>
