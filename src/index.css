@@ -1,13 +1,432 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* fonts */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+/* Set core root defaults */
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+  background-color: var(--color-grey-grade10);
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove all animations, transitions and smooth scroll for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+button {
+  cursor: pointer;
+}
+:root {
+  --color-white: #f0f0f0;
+  --color-white-bg: #fff;
+  --color-black: #000;
+  --color-light-black: #172337;
+  --color-border-grey: #e4e7ed;
+  --color-brand-orange: #fb641b;
+  --color-brand-blue: #2874f0;
+  --color-brand-bbd: #2455f4;
+  --color-brand-refurb: #f2575b;
+  --color-brand-footer: #172337;
+  --color-brand-blue-lighter: #7accff;
+  --color-brand-blue-lighter1: #dfeafd;
+  --color-blue-lighter1: #b3d7ff;
+  --color-blue-lighter2: #2370f4;
+  --color-blue-lighter3: #2a55e5;
+  --color-blue-lighter4: #f5f7fa;
+  --color-blue-lighter5: #d5d7db;
+  --color-blue-lighter6: #cfe1ff;
+  --color-blue-lighter7: #f0f5ff;
+  --color-primary-yellow: #ffe11b;
+  --color-primary-yellow2: #f1d27d;
+  --color-yellow-grade1: #fff7e1;
+  --color-yellow-grade2: #fef8e0;
+  --color-purple: #5f4eeb;
+  --color-offer-green: #388e3c;
+  --color-green-grade0: #26a541;
+  --color-green-grade1: #e9f2e9;
+  --color-green-grade2: #e6f4e8;
+  --color-green-grade3: #e6f3e6;
+  --color-green-grade4: #008c00;
+  --color-yellowish-orange: #ff9f00;
+  --color-flash-green: #11c29b;
+  --color-error-red: #ff6161;
+  --color-error-red2: #ff4343;
+  --color-error-red3: #ffeaed;
+  --color-error-red4: #dd5354;
+  --color-error-red5: #d23276;
+  --color-error-red6: #e4001e;
+  --color-error-red7: #e32727;
+  --color-grey-grade0: #fafafa;
+  --color-grey-grade1: #f0f0f0;
+  --color-grey-grade2: #e0e0e0;
+  --color-grey-grade3: #c2c2c2;
+  --color-grey-grade4: #878787;
+  --color-grey-grade5: #212121;
+  --color-grey-grade6: #d7d7d7;
+  --color-grey-grade7: #f9f9f9;
+  --color-grey-grade8: #9e9e9e;
+  --color-grey-grade9: #efefef;
+  --color-grey-grade10: #f5f5f5;
+  --color-grey-grade11: #aaa;
+  --color-grey-grade12: #dbdbdb;
+  --color-grey-grade13: #fbfbfb;
+  --color-grey-grade14: #666;
+  --color-grey-grade15: #f8f8f8;
+  --color-grey-grade16: #eee;
+  --color-grey-grade17: #9b9b9b;
+  --color-grey-grade18: #686868;
+  --color-grey-grade19: #eaeaea;
+  --color-grey-grade20: #e6e6e6;
+  --color-grey-grade21: #e9e9e9;
+  --color-grey-grade22: #d8d8d8;
+  --color-grey-grade23: #ffcbd0;
+  --color-grey-grade24: #717478;
+  --color-grey-grade25: #111112;
+  --color-grey-grade26: #f0f2f5;
+  --color-grey-grade27: #e4e7ed;
+  --color-grey-grade28: #d5d7db;
+  --color-grey-grade29: #bdbdbd;
+  --color-greyish-blue: #b8bbbf;
+  --color-light-greyish-blue: #f1f3f5;
+  --color-error-bg: #fff7f8;
+  --color-info-bg: #ffffe6;
+  --color-info-light-bg: #fffbf6;
+  --color-page-bg: #f1f3f6;
+  --color-green-bg: #f7fffa;
+  --color-blue-bg: #f5faff;
+  --color-vip-black-bg: #343c4e;
+  --color-grey-badge: #717171;
+  --color-grey-light: #d3d3d3;
+  --color-grey-light2: #d5d7db;
+  --color-vendor-text: #3f3f3f;
+  --color-supermart-green: #26a541;
+  --color-dark-blue1: #1d6ded;
+  --color-light-blue: #f4f8ff;
+  --color-light-blue1: #bed5fa;
+  --color-light-blue2: #93b7f1;
+  --color-light-blue3: #f0f5ff;
+  --color-suparmart-fk-background: #258b3b;
+  --color-info-yellow: #fffdec;
+  --color-cobranded-footer-blue: #005387;
+  --color-pre-book-purple: #854987;
+  --color-light-pink: #fff0ff;
+  --color-light-orange: #fdf5e7;
+  --color-orange-bg: #fff7e1;
+  --color-bright-orange: #e79900;
+  --color-payment-orange: #ffc200;
+  --color-wishlist-red: #ff4343;
+  --color-light-green: #e7f8ec;
+  --color-selector-black: #010101;
+  --color-light-grey-orange: #fef7e9;
+  --color-mustard: #af7b1c;
+  --color-light-white-bg: #f5f7fa;
+  --header-width-min: 790px;
+  --width-min: 978px;
+  --width-max: 1680px;
+  --product-page-gutter: 24px;
+  --product-section-title-width: 110px;
+  --product-section-title-padding: 10px;
+  --font-regular: 400;
+  --font-medium: 500;
+  --font-size-8: 8px;
+  --font-size-10: 10px;
+  --font-size-11: 11px;
+  --font-size-12: 12px;
+  --font-size-13: 13px;
+  --font-size-14: 14px;
+  --font-size-16: 16px;
+  --font-size-18: 18px;
+  --font-size-20: 20px;
+  --font-size-24: 24px;
+  --font-size-28: 28px;
+  --font-size-32: 32px;
+  --font-size-default: 14px;
+}
+
+/* div {
+  border: 1px solid black;
+} */
+/* Login Style */
+
+.login-conatiner {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  background-color: #f1f3f6;
+  font-family: Roboto, Arial, sans-serif;
+}
+.login-content {
+  width: 300px;
+  height: 450px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 40px 33px;
+  background-color: var(--color-blue-lighter2);
+  color: var(--color-blue-lighter7);
+}
+.login-content span {
+  font-size: var(--font-size-28);
+  font-weight: 600;
+  color: #fff;
+}
+.login-content img {
+  width: 200px;
+}
+.login-content div {
+  display: flex;
+  justify-content: center;
+}
+.login-box {
+  width: 400px;
+  height: 450px;
+  padding: 20px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.login-input {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+.login-input input {
+  margin: none;
+  width: 280px;
+  height: 38px;
+  border: none;
+  outline: none;
+}
+.login-text-box {
+  width: 300px;
+  height: 40px;
+  margin: 10px;
+  border-bottom: 1px solid darkgray;
+}
+.login-input button {
+  width: 300px;
+  height: 40px;
+  margin: 10px;
+  border: none;
+  background-color: #fb641b;
+  color: #fff;
+}
+.new-acc {
+  display: flex;
+  justify-content: center;
+}
+.new-acc a {
+  text-decoration: none;
+}
+.existing-user {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 300px;
+  height: 40px;
+  margin-top: 10px;
+  margin-left: 10px;
+  background-color: #fff;
+  color: var(--color-blue-lighter3);
+  font-weight: 500;
+  border-bottom: 1px solid var(--color-border-grey);
+  border-left: 1px solid var(--color-border-grey);
+  border-right: 1px solid var(--color-border-grey);
+  box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.12);
+}
+.existing-user a {
+  text-decoration: none;
+}
+
+/* nav Bar */
+header {
+  position: sticky;
+  top: 0;
+}
+nav {
+  height: 65px;
+  background-color: var(--color-brand-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 20px;
+  font-size: 16px;
+  letter-spacing: 0.1px;
+  font-weight: 500;
+  color: #fff;
+  font-family: Roboto, Arial, sans-serif;
+  z-index: 10;
+  
+  
+}
+.logo {
+  margin-right: 20px;
+}
+.logo img {
+  width: 100px;
+  height: auto;
+}
+.explore {
+  display: flex;
+  margin-right: 20px;
+  font-size: 12px;
+  font-style: italic;
+}
+.explore span {
+  margin-left: 2px;
+  color: var(--color-primary-yellow);
+}
+
+.explore img {
+  width: 15px;
+  height: 15px;
+}
+.search {
+  width: 450px;
+  border-radius: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  padding-right: 10px;
+  padding-left: 5px;
+  margin-left: 20px;
+  margin-right: 20px;
+  font-size: var(--font-size-12);
+}
+.search input {
+  border: none;
+  outline: none;
+  width: 100%;
+  height: 36px;
+}
+.login-btn {
+  width: 100px;
+  border: none;
+  background-color: #fff;
+  text-align: center;
+  height: 30px;
+  color: var(--color-blue-lighter3);
+}
+.user-name {
+  position: relative;
+  cursor: pointer;
+  /* border: 1px solid black; */
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  
+}
+.log-out {
+  margin-left: 20px;
+}
+.profile-box {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+ 
+}
+.username-nav-item{
+  /* border: 1px solid black; */
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.user-name-txt{
+  position: relative;
+}
+.dropdown-list{
+  position: absolute;
+  
+  width: 200px;
+  /* height: 200px; */
+  top:58px;
+  left: -35px;
+  margin: none;
+  margin-bottom: -10px;
+}
+.arrow{
+  display: flex;
+  justify-content: center;
+
+  margin: -25px;
+}
+.user-profile-box{
+  background-color: #fff;
+  width: 200px;
+  height: 300px;
+  margin: none;
+  padding: 0;
+   box-shadow: 0px 8px 10px 0px black;
 }
