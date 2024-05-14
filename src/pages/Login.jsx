@@ -81,7 +81,7 @@ export function Login({ setAuthentication }) {
             </button>
           </div>
           <div className="new-acc">
-            <Link to={"/NewLogin"}>
+            <Link to={"/NewUser"}>
               <span>New to Flipkart? Create an account</span>
             </Link>
           </div>

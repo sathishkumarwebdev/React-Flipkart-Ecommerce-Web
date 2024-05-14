@@ -1,6 +1,7 @@
 import { Route, Routes,useNavigate } from "react-router-dom";
 import { useState,useEffect } from "react";
 import {Login} from "./pages/Login";
+import {NewUser} from "./pages/NewUser"
 import {UserProvider} from "./providers/userProvider"
 function App() {
   //hooks
@@ -20,6 +21,7 @@ function App() {
           path="/"
           element={<Login setAuthentication={setAuthentication} />}
         ></Route>
+        <Route path="/Newuser" element={<NewUser />} />
       </Routes>
     </UserProvider>
   );
