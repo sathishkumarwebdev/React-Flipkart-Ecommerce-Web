@@ -17,10 +17,8 @@ export function YourCart() {
   console.log(address);
   const navigate = useNavigate();
 
-  function hanldeShop() {
-    navigate("/");
-  }
-  const qunatity = cart.reduce((acc, cart) => acc + cart.qty, 0);
+
+  // const qunatity = cart.reduce((acc, cart) => acc + cart.qty, 0);
 
   return (
     <>
@@ -172,7 +170,9 @@ export function YourCart() {
                   </div>
                 </div>
                 <div className="place-order-container">
-                  <button>PLACE ORDER</button>
+                  <Link to={"/PlaceOrder"}>
+                    <button>PLACE ORDER</button>
+                  </Link>
                 </div>
               </div>
             </div>

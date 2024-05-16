@@ -4,21 +4,22 @@ import { List } from "../components/List";
 import { useEffect, useState, useContext } from "react";
 import { Card } from "../components/Card";
 // import { Footer } from "../Components/Footer";
-import {userContext} from "../providers/userProvider"
+import {userContext} from "../providers/userProvider";
+import {loginContext} from "../providers/LoginProvider"
 
 export function Products() {
   //hooks
   const [products, setProducts] = useState([]);
   const context = useContext(userContext);
-  console.log("context ::", context);
+  const loginContextToken=useContext(loginContext);
+  const {token}=loginContextToken
   const { userData, setUserData } = context;
   // const [userData, setUserData] = useState([]);
 
   //provider
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
-    console.log(token);
+    
     const getData = async () => {
       const response = await fetch("https://dummyjson.com/auth/me", {
         method: "GET",

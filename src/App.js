@@ -5,8 +5,10 @@ import {NewUser} from "./pages/NewUser";
 import {Products} from "./pages/Products"
 import {ProductDetail} from "./pages/ProductDetail"
 import {YourCart} from "./pages/YourCart"
+import {PlaceOrder} from "./pages/PlaceOrder"
 import {UserProvider} from "./providers/userProvider";
-import {CartProvider} from "./providers/CartProvider"
+import {CartProvider} from "./providers/CartProvider";
+import {LoginProvider} from "./providers/LoginProvider"
 function App() {
   //hooks
   const navigate = useNavigate();
@@ -21,16 +23,19 @@ function App() {
   return (
     <UserProvider>
       <CartProvider>
-        <Routes>
-          <Route
-            path="/Login"
-            element={<Login setAuthentication={setAuthentication} />}
-          ></Route>
-          <Route path="/Newuser" element={<NewUser />} />
-          <Route path="/" element={<Products />} />
-          <Route path="/ProductDetails" element={<ProductDetail />} />
-          <Route path="/YourCart" element={<YourCart />} />
-        </Routes>
+        <LoginProvider>
+          <Routes>
+            <Route
+              path="/Login"
+              element={<Login setAuthentication={setAuthentication} />}
+            ></Route>
+            <Route path="/Newuser" element={<NewUser />} />
+            <Route path="/" element={<Products />} />
+            <Route path="/ProductDetails" element={<ProductDetail />} />
+            <Route path="/YourCart" element={<YourCart />} />
+            <Route path="/PlaceOrder" element={<PlaceOrder />} />
+          </Routes>
+        </LoginProvider>
       </CartProvider>
     </UserProvider>
   );

@@ -1,12 +1,16 @@
 import login_img_c4a81e from "../assets/login_img_c4a81e.png";
-import { useState } from "react";
+import { useState,useContext } from "react";
 import { NavBar } from "../components/NavBar";
 import { Link } from "react-router-dom";
+import {loginContext} from "../providers/LoginProvider";
 export function Login({ setAuthentication }) {
   //hooks
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [trigger, setTrigger] = useState(false);
+
+  const context=useContext(loginContext);
+  const {token,setToken}=context;
 
   // functions handle
   const handleUserName = (e) => {
@@ -32,7 +36,7 @@ export function Login({ setAuthentication }) {
       const result = await respose.json();
 
       if (result?.token) {
-        localStorage.setItem("token", result.token);
+        setToken(result.token);
         setTrigger(false);
         setAuthentication(true);
       } else {
