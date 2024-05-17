@@ -30,7 +30,9 @@ export function NavBar() {
       <nav>
         <div className="logo-container">
           <div className="logo">
-            <img src={logo} alt="flipkart" title="flipkart" />
+            <Link to={"/"}>
+              <img src={logo} alt="flipkart" title="flipkart" />
+            </Link>
           </div>
           <div className="explore">
             <p>

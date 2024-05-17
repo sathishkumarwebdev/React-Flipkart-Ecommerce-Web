@@ -820,6 +820,7 @@ nav {
   display: flex;
   margin: 20px 50px 20px 50px;
   font-family: Roboto, Arial, sans-serif;
+  height:auto;
 }
 .your-cart {
   flex: 3;
@@ -914,6 +915,12 @@ nav {
 }
 .cart-items-container {
   background-color: #fff;
+  height: auto;
+}
+.cart-items-container-main{
+  height: auto;
+  background-color: #fff;
+  padding-bottom: 10px;
 }
 .your-cart-items {
   padding: 20px;
@@ -1203,6 +1210,34 @@ nav {
   padding: 20px;
   display: flex;
   justify-content: space-between;
+  margin-bottom: 20px;
+}
+.selelcted-title{
+   width: 100%;
+  background-color: var(--color-blue-lighter3);
+  height: 50px;
+  padding-left: 20px;
+  padding-top: 15px;
+  display: flex;
+  text-transform: uppercase;
+  color: #fff;
+  font-weight: 400;
+}
+.login-info-box {
+   height: 150px;
+  background-color: #fff;
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+ 
+}
+.login-box-placeorder{
+  display: flex;
+  width: 100%;
+  align-items: center;
+  flex-direction: column;
+  /* justify-content: space-between; */
 }
 
 .num-box {
@@ -1280,14 +1315,26 @@ nav {
 
 .placeorder-items {
   background-color: #fff;
-  height: 50px;
+  height: auto;
   padding-left: 20px;
   padding-top: 10px;
   padding-top: 10px;
   margin-top: 20px;
   display: flex;
+  padding-bottom: 10px;
+  width: auto;
+  /* flex-direction: column; */
+  /* justify-content: space-between; */
+  
 }
-.deliver-herep-btn {
+.placeorder-items-box{
+
+display: flex;
+width:100%;
+justify-content: space-evenly;
+align-items: center;
+}
+.delivery-here-btn {
   margin-top: 10px;
   margin-left: 10px;
   /* border: 1px solid black; */
@@ -1301,10 +1348,49 @@ nav {
   color: #fff;
   font-weight: 400;
   border-radius: 3px;
+  
 }
+a{
+  text-decoration: none;
+}
+
 .blue-text {
   color: var(--color-blue-lighter3);
 }
 .grey-text{
   color: var(--color-grey-grade18);
+}
+.continue-btn{
+    /* margin-top: 10px;
+  margin-left: 10px; */
+  /* border: 1px solid black; */
+  width: 200px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-brand-orange);
+  font-size: 16px;
+  color: #fff;
+  font-weight: 400;
+  border-radius: 3px;
+}
+
+/* Payment */
+.payment-details-container{
+  width: 100%;
+  height: auto;
+  padding: 20px;
+  background-color: #fff;
+  display: flex;
+  /* justify-content: space-between; */
+}
+.card-text{
+  color: var(--color-grey-grade14);
+}
+.card-text-size{
+  font-size: 12px;
+}
+.payment-details-container div:nth-child(1){
+  margin-top: 10px;
 }
