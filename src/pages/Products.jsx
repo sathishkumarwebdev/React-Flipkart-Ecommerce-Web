@@ -17,6 +17,8 @@ export function Products() {
   // const [userData, setUserData] = useState([]);
 
   //provider
+  const datas = products.filter((item) => item.category === "smartphones");
+  console.log(datas);
 
   useEffect(() => {
     
@@ -35,7 +37,7 @@ export function Products() {
     if (token) {
       getData();
     }
-
+    console.log(products);
     // setTimeout(getData, 1000);
   }, []);
 
@@ -43,7 +45,7 @@ export function Products() {
 
   useEffect(() => {
     const getProductDetails = async () => {
-      const res = await fetch("https://dummyjson.com/products?limit=100");
+      const res = await fetch("https://dummyjson.com/products?limit=500");
       const productData = await res.json();
       const { products } = productData;
       setProducts(products);
@@ -59,21 +61,6 @@ export function Products() {
 
       <div className="card-box-conatiner">
         <div className="card-box-category">
-          <h2 className="product-title">Smart Phones</h2>
-          <div className="view-btn">VIEW ALL</div>
-        </div>
-
-        <div className="card-box-items">
-          {products
-            .filter((item) => item.category === "smartphones")
-            .map((product) => (
-              <Card key={product.id} product={product} />
-            ))}
-        </div>
-      </div>
-
-      <div className="card-box-conatiner">
-        <div className="card-box-category">
           <h2 className="product-title">Laptops</h2>
           <div className="view-btn">VIEW ALL</div>
         </div>
@@ -81,9 +68,26 @@ export function Products() {
         <div className="card-box-items">
           {products
             .filter((item) => item.category === "laptops")
-            .map((product) => (
-              <Card key={product.id} product={product} />
-            ))}
+            .map(
+              (product, index) =>
+                index < 5 && <Card key={product.id} product={product} />
+            )}
+        </div>
+      </div>
+
+      <div className="card-box-conatiner">
+        <div className="card-box-category">
+          <h2 className="product-title">Smart Phones</h2>
+          <div className="view-btn">VIEW ALL</div>
+        </div>
+
+        <div className="card-box-items">
+          {products
+            .filter((item) => item.category === "smartphones")
+            .map(
+              (product, index) =>
+                index < 5 && <Card key={product.id} product={product} />
+            )}
         </div>
       </div>
 
@@ -96,9 +100,10 @@ export function Products() {
         <div className="card-box-items">
           {products
             .filter((item) => item.category === "groceries")
-            .map((product) => (
-              <Card key={product.id} product={product} />
-            ))}
+            .map(
+              (product, index) =>
+                index < 5 && <Card key={product.id} product={product} />
+            )}
         </div>
       </div>
 
@@ -111,9 +116,10 @@ export function Products() {
         <div className="card-box-items">
           {products
             .filter((item) => item.category === "fragrances")
-            .map((product) => (
-              <Card key={product.id} product={product} />
-            ))}
+            .map(
+              (product, index) =>
+                index < 5 && <Card key={product.id} product={product} />
+            )}
         </div>
       </div>
 

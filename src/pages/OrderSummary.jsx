@@ -60,7 +60,7 @@ const navigate=useNavigate();
                 </div>
                 <div className="change-btn">Change</div>
               </div>
-              <div className="cart-items-container-main">
+              <div className="cart-items-container-main box-shadow">
                 <div className="selelcted-title">
                   <div className="num-box color-box">3</div>
                   ORDER SUMMARY

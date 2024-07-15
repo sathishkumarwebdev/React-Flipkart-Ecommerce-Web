@@ -5,7 +5,7 @@ export function Cart({ cart, dispatch }) {
 
   const discountValue = price * ((100 - discountPercentage) / 100);
   const value = discountValue.toFixed(2);
-
+  console.log("the qty", qty);
   return (
     <div>
       <div className="your-cart-items">
