@@ -6,10 +6,12 @@ export function CartPrice({ cart }) {
   // const totalPercentage=cart.reduce((acc, cart) => acc + cart.discountPercentage, 0);
   const afterDiscountPrice = cart
     .reduce(
-      (acc, cart) => acc + cart.price * ((100 - cart.discountPercentage) / 100),
+      (acc, cart) =>
+        acc + cart.price * ((100 - cart.discountPercentage) / 100) * cart.qty,
       0
     )
     .toFixed(2);
+  console.log("after price", afterDiscountPrice, "  ", totalPrice);
 
   const discountedAmt = (totalPrice - afterDiscountPrice).toFixed(2);
 
